@@ -14,26 +14,29 @@ function rndAlert(numeriRnd) {
     }
   }
   alert(rndArr);
-  return rndArr
+  return rndArr ;
 }
 
 //imput utente
-function valoriUtente(rndAlert) {
-  var arrUtente = []
-  var numGiusti = []
+function valoriUtente(numeriPc) {
+  var arrUtente = [];
+  var numGiusti = [];
 
     for (var i = 0; i < 5; i++) {
 
       var numUtente = parseInt(prompt('Dimmi un valore'));
-       arrUtente.push(numUtente);
+
        if (!arrUtente.includes(numUtente)) {
-         arrUtente.push(numUtente)
-         if (rndArr.includes(numUtente)) {
-           numGiusti.push(numUtente)
+         arrUtente.push(numUtente);
+
+         if (numeriPc.includes(numUtente)) {
+           numGiusti.push(numUtente);
          }
-       }//else {
-       //   alert('Valore doppio ritenta')
-       // }
+       }
+       else {
+         alert('Valore doppio ritenta');
+         i--;
+       }
 
 
        console.log('Hai indovinato ' + numGiusti.length + ' valori : ' + numGiusti);
