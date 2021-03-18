@@ -5,34 +5,57 @@ function getRnd(min, max) {
   return Math.floor(Math.random()*maxRnd) + minRnd;
 }
 
-function rndAlert() {
-}
-
-var rndArr = []
-while (rndArr.length < 5) {
-  var rnd = getRnd(1, 10);
-  if (!rndArr.includes(rnd)) { //se l'array non include rnd
-    rndArr.push(rnd);
-  }
-}
-alert(rndArr)
-//imput utente
-var numUtente = []
-var numGiusti = []
-setTimeout(function() {
-  while (numUtente.length < 5) {
-    var numeri = parseInt(prompt("inserisci i numeri"));
-    if (!numeri.includes(numUtente)){
-       numeri.push(numUtente);
-       if (!rndArr.includes(numeri)) {
-          numGiusti.push(numeri)
-       }
+function rndAlert(numeriRnd) {
+  var rndArr = []
+  while (rndArr.length < numeriRnd) {
+    var rnd = getRnd(1, 10);
+    if (!rndArr.includes(rnd)) { //se l'array non include rnd
+      rndArr.push(rnd);
     }
-
   }
+  alert(rndArr);
+  return rndArr
+}
 
-  console.log(numUtente)
+//imput utente
+function valoriUtente(rndAlert) {
+  var arrUtente = []
+  var numGiusti = []
 
-},3000)
+    for (var i = 0; i < 5; i++) {
 
-console.log(rndArr)
+      var numUtente = parseInt(prompt('Dimmi un valore'));
+       arrUtente.push(numUtente);
+       if (!arrUtente.includes(numUtente)) {
+         arrUtente.push(numUtente)
+         if (rndArr.includes(numUtente)) {
+           numGiusti.push(numUtente)
+         }
+       }//else {
+       //   alert('Valore doppio ritenta')
+       // }
+
+
+       console.log('Hai indovinato ' + numGiusti.length + ' valori : ' + numGiusti);
+       console.log(arrUtente)
+      // if (!arrUtente.includes(numUtente)){ //se arrUtente non include numUtente push
+      //    arrUtente.push(numUtente);
+      //    if (rndArr.includes(numUtente)) {
+      //       numUtente.push(numGiusti)
+      //    } else if (numUtente == arrUtente[i]) {
+      //      console.log('Numero già inserito');
+      //    }
+      // }
+}}
+
+function init() {
+
+   var numeriDaScoprire = rndAlert(5);
+   setTimeout(function() {
+
+     valoriUtente(numeriDaScoprire);
+   },2000);
+   return ;
+}
+
+init();
